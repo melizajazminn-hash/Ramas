@@ -3,28 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guía de Comandos Git</title>
+    <title>Diccionario Git Roto-Transitions</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://googleapis.com">
+    <link rel="preconnect" href="https://gstatic.com" crossorigin>
+    <link href="https://googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@500;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1>Diccionario Git Interactiva</h1>
-        <p>Aprendiendo a trabajar con ramas</p>
+        <h1>Diccionario Git Interactivo</h1>
+        
+    
+        <nav class="menu-roto">
+            <button class="btn-menu active" onclick="cambiarSeccion('inicio')">Comandos Base</button>
+            <button class="btn-menu" onclick="cambiarSeccion('ramas')">Trabajo con Ramas</button>
+        </nav>
     </header>
-    <main id="contenedor">
-        <section class="comando">
-            <h2>git init</h2>
-            <p>Inicializa un nuevo repositorio local en la carpeta actual.</p>
-        </section>
-        <section class="comando">
-            <h2>git clone</h2>
-            <p>Descarga una copia exacta de un repositorio remoto.</p>
-        </section>
-        <section class="comando">
-            <h2>git add</h2>
-            <p>Prepara los cambios (staging) para ser incluidos en el próximo commit.</p>
-        </section>
-        <!-- Aquí los estudiantes agregarán más comandos luego -->
-    </main>
+
+    <!-- ESCENA 3D PRINCIPAL (Inspirada en Dribbble) -->
+    <div class="escena-3d">
+        <div id="cubo-contenido" class="cubo-contenido mostrar-inicio">
+            
+            <!-- CARA 1: COMANDOS BASE -->
+            <main class="cara-seccion cara-frontal" id="vista-inicio">
+                <div class="grid-comandos">
+                    <section class="comando">
+                        <h2>git init</h2>
+                        <p>Inicializa un nuevo repositorio local en la carpeta actual.</p>
+                    </section>
+                     <section class="comando">
+                        <h2>git commit</h2>
+                        <p>Guarda la captura de los cambios preparados en el historial.</p>
+                    </section>
+                    <section class="comando">
+                        <h2>git clone</h2>
+                        <p>Descarga una copia exacta de un repositorio remoto.</p>
+                    </section>
+                    <section class="comando">
+                        <h2>git add</h2>
+                        <p>Prepara los cambios (staging) para ser incluidos en el próximo commit.</p>
+                    </section>
+                </div>
+            </main>
+
+            <!-- CARA 2: TRABAJO CON RAMAS (Se revela al rotar) -->
+            <main class="cara-seccion cara-superior" id="vista-ramas">
+                <div class="grid-comandos">
+                    <section class="comando comando-rama">
+                        <h2>git branch</h2>
+                        <p>Lista, crea o elimina ramas en tu repositorio local.</p>
+                    </section>
+                    <section class="comando comando-rama">
+                        <h2>git checkout</h2>
+                        <p>Te permite saltar de una rama a otra para trabajar en diferentes flujos.</p>
+                    </section>
+                    <section class="comando comando-rama">
+                        <h2>git merge</h2>
+                        <p>Combina el historial y los cambios de una rama dentro de tu rama activa.</p>
+                    </section>
+                </div>
+            </main>
+
+        </div>
+    </div>
+
+    <!-- JavaScript para alternar las clases de rotación -->
+    <script>
+        function cambiarSeccion(seccion) {
+            const cubo = document.getElementById('cubo-contenido');
+            const botones = document.querySelectorAll('.btn-menu');
+            
+            // Remover estado activo de los botones y añadir al seleccionado
+            botones.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+
+            // Cambiar las clases del panel para activar la roto-transición
+            if (seccion === 'inicio') {
+                cubo.className = 'cubo-contenido mostrar-inicio';
+            } else if (seccion === 'ramas') {
+                cubo.className = 'cubo-contenido mostrar-ramas';
+            }
+        }
+    </script>
 </body>
 </html>
+
